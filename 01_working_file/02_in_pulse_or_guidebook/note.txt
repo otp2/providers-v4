@@ -1,0 +1,1 @@
+use first and last name to pull data from pulse and guidebook, take from this spreadsheet for what you are missing
