@@ -15,14 +15,9 @@ For a detailed explanation of project goals, see [Project Goals and Scope](./05_
 ## Current Status
 
 *   **Data Ingestion:** Legacy Airtable, Pulse (BHI, Counseling, MM), and Northshore data loaded.
-*   **Salesforce Picklists:** Standard picklists for Credentials, Ages, Genders, and Modalities loaded.
-*   **Name Reconciliation:**
-    *   Northshore names cleaned and reconciled against the primary mapping list (derived from legacy Airtable).
-    *   Pulse names extracted, cleaned, consolidated, and reconciled against the primary mapping list.
-    *   All Pulse and Northshore providers are now accounted for in the primary mapping list.
-*   **Unmatched Provider Identification:** Providers listed in the primary mapping file but *not* found in Pulse or Northshore sources have been identified and saved separately.
-*   **Initial Data Cleaning:** Basic formatting cleanup applied to Salesforce picklists and source files (whitespace, blank rows, specific character issues).
-*   **File Structure Reorganization:** Directory structure updated with numbered prefixes for better organization and clarity.
+*   **Initial Data Transformation:** All three Pulse data sources (BHI, Counseling, MM) have been combined into a single working file in the 01_working_data_transformation directory.
+*   **Column Standardization:** Provider Type data has been integrated within the Internal Label field to reduce redundancy.
+*   **Next Phase:** Data mapping against Salesforce picklists and field standardization.
 
 ## Project Structure
 
@@ -34,25 +29,20 @@ For a detailed explanation of project goals, see [Project Goals and Scope](./05_
 │   │   ├── pulse_counseling/
 │   │   └── pulse_mm/
 │   └── 02_guidebook/                   # Guidebook data
-├── 01_working_file/                  # Files related to mapping and reconciliation
-│   ├── 00_archive/                     # Archive of older working files
-│   ├── 01_not_in_pulses_or_guidebook/  # Providers not found in current sources
-│   └── 02_in_pulse_or_guidebook/       # Matched providers from current sources
-├── 02_processed_data/                # Processed and consolidated data
-│   └── main_provider_table/            # Main consolidated provider data
+├── 01_working_data_transformation/     # Files related to data transformation
+│   ├── 00_working_data_transformation/   # Active transformation files
+│   │   └── working_pulse_v1.csv         # Combined Pulse data (BHI, Counseling, MM)
+│   └── archive/                        # Archive of older working files
+├── 02_processed_data/                # Processed and consolidated data files
 ├── 03_salesforce_picklist/           # Canonical picklists from Salesforce
-│   ├── salesforce_ages.csv
-│   ├── salesforce_credentials.csv
-│   ├── salesforce_genders.csv
-│   └── salesforce_treatment_modialities.csv
-├── 04_scripts/                       # Contains helper scripts
+├── 04_python_scripts/                # Contains helper scripts
 │   └── archive/                        # Older versions of scripts
 ├── 05_documentation/                 # Project documentation
 │   ├── Project_Goals_and_Scope.md
 │   ├── Data_Sources_and_Schema.md
 │   ├── Processing_Log_and_Methodology.md
-│   └── data_restructuring_plan.md
-├── .gitignore
+│   ├── data_restructuring_plan.md
+│   └── Next_Steps_and_Considerations.md
 ├── README.md
 ```
 
@@ -66,10 +56,11 @@ For a detailed explanation of project goals, see [Project Goals and Scope](./05_
 
 ## Next Steps Overview
 
-1.  **Salesforce Picklist Mapping:** Map source data fields (Credentials, Ages, etc.) to the standard Salesforce lists.
-2.  **NPI Lookup & Validation:** Verify and find missing NPIs for providers.
-3.  **Field Mapping:** Map remaining relevant fields from source data to the target schema.
-4.  **Data Validation & Cleanup:** Perform final consistency checks and data cleaning.
-5.  **Airtable Preparation:** Format data for import into the new Airtable base structure.
+1.  **Field Standardization:** Standardize all remaining fields in the combined dataset.
+2.  **Salesforce Picklist Mapping:** Map source data fields (Credentials, Ages, etc.) to the standard Salesforce lists.
+3.  **NPI Lookup & Validation:** Verify and find missing NPIs for providers.
+4.  **Field Mapping:** Map remaining relevant fields from source data to the target schema.
+5.  **Data Validation & Cleanup:** Perform final consistency checks and data cleaning.
+6.  **Airtable Preparation:** Format data for import into the new Airtable base structure.
 
 See [Next Steps and Considerations](./05_documentation/Next_Steps_and_Considerations.md) for detailed information. 

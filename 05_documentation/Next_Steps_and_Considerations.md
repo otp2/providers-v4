@@ -4,28 +4,35 @@ This document outlines the upcoming tasks and important considerations for the P
 
 ## Immediate Next Steps
 
-1. **Salesforce Picklist Mapping**
+1. **Continue Working with the Combined Dataset**
+   - Use the consolidated `working_pulse_v1.csv` file for all further data transformation and standardization
+   - Standardize remaining fields according to business requirements
+   - Consider additional column cleanup or renaming for clarity
+
+2. **Salesforce Picklist Mapping**
    - Map all provider attributes to standardized Salesforce picklists
    - Create crosswalk tables between source system values and Salesforce values
    - Implement validation checks to ensure all mapped values exist in picklists
+   - Focus first on the most critical fields: Credentials, Gender, Ages Treated, and Treatment Modalities
 
-2. **NPI Lookup & Validation**
+3. **Field Formatting and Standardization**
+   - Standardize phone number formats across all providers
+   - Ensure location information is consistently formatted
+   - Normalize specialties and treatment modalities listings
+   - Address any inconsistencies in the "Additional Considerations" field
+
+4. **NPI Lookup & Validation**
    - Validate existing NPIs against the NPPES registry
    - Research and add missing NPIs for providers without them
    - Create a documented process for NPI verification
 
-3. **Field Mapping Completion**
-   - Finalize the mapping between source data fields and target schema
-   - Document any transformation logic needed for each field
-   - Address any discrepancies between data sources for the same provider
-
-4. **Data Validation & Cleanup**
+5. **Comprehensive Data Validation**
    - Perform consistency checks across all data fields
    - Validate phone numbers, emails, and web addresses
    - Ensure all required fields have appropriate values
    - Identify and handle duplicate records
 
-5. **Airtable Base Preparation**
+6. **Airtable Base Preparation**
    - Design the final Airtable schema based on the data restructuring plan
    - Create appropriate tables with linking fields
    - Set up views and filters for different use cases

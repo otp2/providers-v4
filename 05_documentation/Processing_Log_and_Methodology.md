@@ -159,4 +159,28 @@ This document tracks the key data processing and cleaning steps undertaken in th
     6.  The `parse_credentials` function was debugged and corrected by removing the faulty regex line.
 *   **Execution & Outcome:**
     *   Script `03_scripts/add_salesforce_credentials.py` (with corrected parsing) was executed successfully.
-    *   The `new_provider_truth_file.csv` was updated in place. The `Salesforce Credential` column was populated for 215 providers. 
+    *   The `new_provider_truth_file.csv` was updated in place. The `Salesforce Credential` column was populated for 215 providers.
+
+## Pulse Data Consolidation (v4 Update)
+
+*   **Goal:** Combine the three separate Pulse data files (BHI, Counseling, MM) into a single consolidated file to streamline subsequent processing.
+*   **Methodology:**
+    1.  Created directory structure `01_working_data_transformation/00_working_data_transformation/` to hold the working files.
+    2.  Created a Python script using pandas to:
+        *   Read the three source files: `pulse_bhi.csv`, `pulse_counseling.csv`, and `pulse_mm.csv`.
+        *   Add a `Provider Type` column to each dataframe to track the source ("Behavioral Health Integration", "Counseling", and "Medication Management").
+        *   Combine the three dataframes using `pd.concat()`.
+        *   Save the combined dataframe to `working_pulse_v1.csv`.
+    3.  Verified the file was created successfully with all 141 records (56 from MM, 63 from Counseling, 22 from BHI).
+*   **Outcome:** Successfully created `01_working_data_transformation/00_working_data_transformation/working_pulse_v1.csv` with all three data sources combined.
+
+## Provider Type Integration
+
+*   **Goal:** Remove redundant `Provider Type` column since this information was already present in the `Internal Label` column.
+*   **Methodology:**
+    1.  Created a Python script to:
+        *   Read the `working_pulse_v1.csv` file.
+        *   Identify and drop the `Provider Type` column.
+        *   Save the updated dataframe back to the same file.
+    2.  Verified that the column was successfully removed and that the file maintained its integrity (141 records, 16 columns).
+*   **Outcome:** Streamlined the dataset by eliminating redundant information while preserving all necessary provider data. 
