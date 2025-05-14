@@ -17,6 +17,8 @@ For a detailed explanation of project goals, see [Project Goals and Scope](./05_
 *   **Data Ingestion:** Legacy Airtable, Pulse (BHI, Counseling, MM), and Northshore data loaded.
 *   **Initial Data Transformation:** All three Pulse data sources (BHI, Counseling, MM) have been combined into a single working file in the 01_working_data_transformation directory.
 *   **Column Standardization:** Provider Type data has been integrated within the Internal Label field to reduce redundancy.
+*   **NPI Integration:** Added NPI numbers from the standardized provider list to all providers in the working dataset.
+*   **Location Information Update:** Added comprehensive location details (building names, addresses, phone numbers) to providers based on their primary locations.
 *   **Next Phase:** Data mapping against Salesforce picklists and field standardization.
 
 ## Project Structure
@@ -31,7 +33,8 @@ For a detailed explanation of project goals, see [Project Goals and Scope](./05_
 │   └── 02_guidebook/                   # Guidebook data
 ├── 01_working_data_transformation/     # Files related to data transformation
 │   ├── 00_working_data_transformation/   # Active transformation files
-│   │   └── working_pulse_v1.csv         # Combined Pulse data (BHI, Counseling, MM)
+│   │   ├── working_pulse_v1.csv         # Combined Pulse data (BHI, Counseling, MM)
+│   │   └── working_pulse_v2.csv         # Enhanced data with NPI and location details
 │   └── archive/                        # Archive of older working files
 ├── 02_processed_data/                # Processed and consolidated data files
 ├── 03_salesforce_picklist/           # Canonical picklists from Salesforce
@@ -54,13 +57,19 @@ For a detailed explanation of project goals, see [Project Goals and Scope](./05_
 *   [Data Restructuring Plan](./05_documentation/data_restructuring_plan.md)
 *   [Next Steps and Considerations](./05_documentation/Next_Steps_and_Considerations.md)
 
+## Recent Updates
+
+* Added NPI numbers as a unique identifier to all providers in the working dataset
+* Updated provider names in the standardized provider list for better matching
+* Added location information (building names, addresses, phone numbers) to all providers
+* Created and updated Python scripts for data transformation and matching
+
 ## Next Steps Overview
 
 1.  **Field Standardization:** Standardize all remaining fields in the combined dataset.
 2.  **Salesforce Picklist Mapping:** Map source data fields (Credentials, Ages, etc.) to the standard Salesforce lists.
-3.  **NPI Lookup & Validation:** Verify and find missing NPIs for providers.
-4.  **Field Mapping:** Map remaining relevant fields from source data to the target schema.
-5.  **Data Validation & Cleanup:** Perform final consistency checks and data cleaning.
-6.  **Airtable Preparation:** Format data for import into the new Airtable base structure.
+3.  **Field Mapping:** Map remaining relevant fields from source data to the target schema.
+4.  **Data Validation & Cleanup:** Perform final consistency checks and data cleaning.
+5.  **Airtable Preparation:** Format data for import into the new Airtable base structure.
 
 See [Next Steps and Considerations](./05_documentation/Next_Steps_and_Considerations.md) for detailed information. 
