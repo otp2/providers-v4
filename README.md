@@ -19,6 +19,7 @@ For a detailed explanation of project goals, see [Project Goals and Scope](./05_
 *   **Column Standardization:** Provider Type data has been integrated within the Internal Label field to reduce redundancy.
 *   **NPI Integration:** Added NPI numbers from the standardized provider list to all providers in the working dataset.
 *   **Location Information Update:** Added comprehensive location details (building names, addresses, phone numbers) to providers based on their primary locations.
+*   **Bio Information Removal:** Removed provider biographical information from the dataset for privacy considerations.
 *   **Next Phase:** Data mapping against Salesforce picklists and field standardization.
 
 ## Project Structure
@@ -34,7 +35,9 @@ For a detailed explanation of project goals, see [Project Goals and Scope](./05_
 ├── 01_working_data_transformation/     # Files related to data transformation
 │   ├── 00_working_data_transformation/   # Active transformation files
 │   │   ├── working_pulse_v1.csv         # Combined Pulse data (BHI, Counseling, MM)
-│   │   └── working_pulse_v2.csv         # Enhanced data with NPI and location details
+│   │   ├── working_pulse_v2.csv         # Enhanced data with NPI and location details
+│   │   ├── working_pulse_v8.csv         # Working dataset with various enhancements
+│   │   └── working_pulse_v9.csv         # Dataset with provider bios removed
 │   └── archive/                        # Archive of older working files
 ├── 02_processed_data/                # Processed and consolidated data files
 ├── 03_salesforce_picklist/           # Canonical picklists from Salesforce
@@ -59,6 +62,7 @@ For a detailed explanation of project goals, see [Project Goals and Scope](./05_
 
 ## Recent Updates
 
+* Removed provider biographical information from the working dataset for privacy considerations
 * Added NPI numbers as a unique identifier to all providers in the working dataset
 * Updated provider names in the standardized provider list for better matching
 * Added location information (building names, addresses, phone numbers) to all providers

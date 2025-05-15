@@ -183,4 +183,16 @@ This document tracks the key data processing and cleaning steps undertaken in th
         *   Identify and drop the `Provider Type` column.
         *   Save the updated dataframe back to the same file.
     2.  Verified that the column was successfully removed and that the file maintained its integrity (141 records, 16 columns).
-*   **Outcome:** Streamlined the dataset by eliminating redundant information while preserving all necessary provider data. 
+*   **Outcome:** Streamlined the dataset by eliminating redundant information while preserving all necessary provider data.
+
+## Bio Information Removal
+
+*   **Goal:** Remove provider biographical information from the working data to comply with privacy considerations and streamline the dataset.
+*   **Methodology:**
+    1.  Identified the `Bio` column in the most recent working data file (`working_pulse_v8.csv`).
+    2.  Created a Python script using pandas to:
+        *   Read the CSV file.
+        *   Set all values in the `Bio` column to empty strings ('').
+        *   Save the updated file as `working_pulse_v9.csv`.
+    3.  Verified the successful removal of bio information while preserving all other provider data.
+*   **Outcome:** Improved data privacy by removing provider biographical information while maintaining the structure and integrity of the dataset. 
