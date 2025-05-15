@@ -33,12 +33,15 @@ For a detailed explanation of project goals, see [Project Goals and Scope](./05_
 │   │   └── pulse_mm/
 │   └── 02_guidebook/                   # Guidebook data
 ├── 01_working_data_transformation/     # Files related to data transformation
-│   ├── 00_working_data_transformation/   # Active transformation files
-│   │   ├── working_pulse_v1.csv         # Combined Pulse data (BHI, Counseling, MM)
-│   │   ├── working_pulse_v2.csv         # Enhanced data with NPI and location details
-│   │   ├── working_pulse_v8.csv         # Working dataset with various enhancements
-│   │   └── working_pulse_v9.csv         # Dataset with provider bios removed
+│   ├── 01_pulse_data/                  # Pulse data transformation
+│   │   ├── 00_in_progress/             # Active transformation files
+│   │   └── 01_checkpoint/              # Stable checkpoint versions
+│   ├── 02_guidebook/                   # Guidebook data transformation
+│   │   ├── 00_in_progress/             # Active transformation files
+│   │   └── 01_checkpoint/              # Stable checkpoint versions
 │   └── archive/                        # Archive of older working files
+│       ├── 01_not_in_pulses_or_guidebook/  # Archived files not in current datasets
+│       └── 02_in_pulse_or_guidebook/   # Archived files now in current datasets
 ├── 02_processed_data/                # Processed and consolidated data files
 ├── 03_salesforce_picklist/           # Canonical picklists from Salesforce
 ├── 04_python_scripts/                # Contains helper scripts
@@ -62,6 +65,9 @@ For a detailed explanation of project goals, see [Project Goals and Scope](./05_
 
 ## Recent Updates
 
+* Restructured the 01_working_data_transformation directory to separate pulse data and guidebook data
+* Implemented a checkpoint system to maintain stable versions of transformation files
+* Reorganized archive directory to better track files based on their inclusion status
 * Removed provider biographical information from the working dataset for privacy considerations
 * Added NPI numbers as a unique identifier to all providers in the working dataset
 * Updated provider names in the standardized provider list for better matching
